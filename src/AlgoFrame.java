@@ -33,6 +33,8 @@ public class AlgoFrame extends JFrame {
     }
 
     private class AlgoCanvas extends JPanel{
+
+        //动画基础--双缓存
         public AlgoCanvas(){
             super(true);
         }

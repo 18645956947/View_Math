@@ -25,4 +25,12 @@ public class AlgoVisHelper {
         g2d.setColor(color);
     }
 
+    //t为毫秒
+    public static void pause(int t){
+        try {
+            Thread.sleep(t);
+        } catch (InterruptedException e) {
+            System.out.println("Error in Sleep");;
+        }
+    }
 }

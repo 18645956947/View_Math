@@ -32,6 +32,13 @@ public class AlgoFrame extends JFrame {
         return canvasHeight;
     }
 
+    private Circle[] circles;
+    public void render(Circle[] circles){
+        this.circles = circles;
+        //重新将jframe上的控件刷新一遍
+        repaint();
+    }
+
     private class AlgoCanvas extends JPanel{
 
         //动画基础--双缓存
@@ -50,15 +57,13 @@ public class AlgoFrame extends JFrame {
                                         RenderingHints.KEY_ANTIALIASING,
                                         RenderingHints.VALUE_ANTIALIAS_ON);
             g2d.addRenderingHints(hints);
-            //绘制图片边的粗细
-           AlgoVisHelper.setStrokeWidth(g2d, 5);
 
+            //具体绘制
+            AlgoVisHelper.setStrokeWidth(g2d, 1);
             AlgoVisHelper.setColor(g2d, Color.RED);
-            //画一个实心圆
-            AlgoVisHelper.fillCircle(g2d, canvasWidth/2, canvasHeight/2, 200);
-            AlgoVisHelper.setColor(g2d, Color.BLUE);
-            //画一个空心圆
-            AlgoVisHelper.strokeCircle(g2d, canvasWidth/2, canvasHeight/2, 200);
+            for(Circle circle : circles){
+                AlgoVisHelper.strokeCircle(g2d, circle.x, circle.y, circle.getR());
+            }
 
 
         }
